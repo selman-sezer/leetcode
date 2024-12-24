@@ -1,3 +1,9 @@
+/*
+Runtime:    0 ms 
+Beats :     100.00%
+*/
+
+
 /**
  * @param {number[]} nums
  * @return {number}
