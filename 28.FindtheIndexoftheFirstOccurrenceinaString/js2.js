@@ -14,6 +14,7 @@ let strStr = function(haystack, needle) {
 
     for (let index = 0; index < hayLength; index++) {
         if (haystack[index] != needle[curr]) {
+
             index -= curr;
             curr = 0;
         }
@@ -27,10 +28,3 @@ let strStr = function(haystack, needle) {
     }
     return -1;
 };
-
-
-let haystack = 'mississippi'; needle = "issip";
-console.log(strStr(haystack, needle));
-
-
-
