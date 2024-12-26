@@ -37,16 +37,23 @@ var longestPalindrome = function(s) {
     let leftSide;
     let rightSide;
 
-    for(let pair of palSet)
-    {
-        pair = pair.split(',');
-        let dif = +pair[1] - +pair[0];
-        if (dif > max) {
-            leftSide = +pair[0];
-            rightSide = +pair[1];
-            max = dif;
-        }
+  
+
+    let pair = 0;
+    for(pair of palSet)
+    {}
+
+    if (pair == 0) {
+        return s[0];
     }
+    pair = pair.split(',');
+    let dif = +pair[1] - +pair[0];
+    if (dif > max) {
+        leftSide = +pair[0];
+        rightSide = +pair[1];
+        max = dif;
+    }
+
     if (max == 0) {
         return s[0];
     }
