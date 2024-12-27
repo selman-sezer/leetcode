@@ -4,58 +4,44 @@
  */
 var longestPalindrome = function(s) {
     let len = s.length;
-    let diff = s.length -1;
-    let pairs = [];
+    if (len==1) {
+        return s;
+    }
 
-    let end ;
-    while (diff) {
-        end = diff;
+    let palSet = new Set();
+    let diff = 1;
+    let longesPal ; 
+
+
+
+
+    while (diff <= 2) {
         let left = 0;
-        while (end < len) {
+        while (left+diff < len) {
             if (s[left] == s[left+diff]) {
-                pairs.push([left, left+diff]);     
+                palSet.add(`${[left, left+diff]}`);   
+                longesPal =   [left, left+diff];
             }
             left+=1;
-            end +=1;
         }
-        diff -= 1;
-    }
-    let palSet = new Set();
-    let currentPair;
-
-    while (pairs.length > 0) {
-        currentPair = pairs.pop();
-        if ((currentPair[1] - currentPair[0])  < 3) {
-            palSet.add(`${currentPair}`);
-        }
-        else if ( (currentPair[1] - currentPair[0])  >= 3 && (palSet.has(`${[currentPair[0]+1, currentPair[1]-1]}`))) {
-            palSet.add(`${currentPair}`);
-        }
+        diff += 1;   
     }
 
-    let max = 0;
-    let leftSide;
-    let rightSide;
+   
+    while (diff < len) {
+        let left = 0;
+        while (left+diff < len) {
+            if (s[left] == s[left+diff] && palSet.has(`${[left+1, left+diff-1]}`)) {
+                palSet.add(`${[left, left+diff]}`); 
+                longesPal =   [left, left+diff];    
+            }
+            left+=1;
+        }
+        diff += 1;
+    }    
 
-  
-
-    let pair = 0;
-    for(pair of palSet)
-    {}
-
-    if (pair == 0) {
+    if (palSet.size == 0) {
         return s[0];
     }
-    pair = pair.split(',');
-    let dif = +pair[1] - +pair[0];
-    if (dif > max) {
-        leftSide = +pair[0];
-        rightSide = +pair[1];
-        max = dif;
-    }
-
-    if (max == 0) {
-        return s[0];
-    }
-    return s.slice(leftSide, rightSide+1);
+    return s.slice(longesPal[0], longesPal[1]+1);
 };
