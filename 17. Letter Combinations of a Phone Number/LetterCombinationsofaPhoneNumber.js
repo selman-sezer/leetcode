@@ -7,7 +7,6 @@ var letterCombinations = function(digits) {
         return []
     }
     let digitsToLettersMap = new Map();
-
     digitsToLettersMap.set(2, 'abc');
     digitsToLettersMap.set(3, 'def');
     digitsToLettersMap.set(4, 'ghi');
@@ -17,8 +16,6 @@ var letterCombinations = function(digits) {
     digitsToLettersMap.set(8, 'tuv');
     digitsToLettersMap.set(9, 'wxyz');
 
-    let stringLength = digits.length;
-    let currentCharacterIndex = 0;
     let result = [''];
     for(let digit of digits) {
         let tempList= [];
@@ -32,10 +29,7 @@ var letterCombinations = function(digits) {
         }
         result = tempList;
     }
-
-    
     return result;
-
 };
 
 
